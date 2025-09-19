@@ -1,0 +1,14 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasourse db {
+    provider = "postgresql"
+    url = env("DB_URL")
+}
+
+model Gym {
+    id Int @id @default(autoincrement())
+    name String
+    createAt DateTime @default(now())
+}
