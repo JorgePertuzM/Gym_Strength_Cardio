@@ -7,8 +7,26 @@ datasourse db {
     url = env("DB_URL")
 }
 
-model Gym {
+emun Rol {
+    deportista
+    entrenador
+}
+
+enum StatusUser {
+    activo
+    pendiente
+    bloqueado
+    eliminado
+}
+
+model Usuario {
     id Int @id @default(autoincrement())
-    name String
-    createAt DateTime @default(now())
+    email    String @unique
+    password_hash String
+    rol Rol
+    nombre String
+    foto_perfil_irl String?
+    status StatusUser @default(pendiente)
+    createAt DataTime @default(now())
+    updateAt DataTime @default(now())
 }
